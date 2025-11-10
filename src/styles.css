@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* If you have a local Cooperplate font, add it here, otherwise use fallback */
+@font-face {
+  font-family: 'Cooperplate';
+  src: local('Cooperplate'), local('Copperplate');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Ken Burns effect handled partly in component via transform scaling on active slide */
+
+/* small reset */
+html, body, #root {
+  height: 100%;
+}
+
+/* force default text color to black unless overridden */
+html, body, #root {
+  color: #000;
+}
+
+.font-cooperplate { font-family: 'Cooperplate', 'Copperplate', serif; }
+
+/* Increase the default transition duration classes a bit */
+.duration-1500 { transition-duration: 1500ms; }
+
+/* Dark theme tweaks */
+:root {
+  --corner-text: #f3f3f1;
+}
+
+.dark .corner-text { color: var(--corner-text); }
+
+/* Make the overlay SALON text pop more */
+h1.drop-shadow-lg {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
