@@ -5,7 +5,7 @@ import ReservationModal from './components/ReservationModal'
 
 export default function App() {
   const images = [
-    '/images/img1.png'
+    import.meta.env.BASE_URL + 'images/img1.png'
     // '/images/img2.png',
     // '/images/img3.png',
     // '/images/img4.png',
@@ -40,7 +40,7 @@ export default function App() {
       <CornerButton
         position="bottom-left"
         label="Menu"
-        onClick={() => window.open('/files/menu.pdf', '_blank')}
+        onClick={() => window.open(import.meta.env.BASE_URL + 'files/menu.pdf', '_blank')}
       />
       <CornerButton
         position="bottom-right"
