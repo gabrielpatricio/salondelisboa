@@ -2,13 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* If you have a local Cooperplate font, add it here, otherwise use fallback */
+/* Self-hosted Cooperplate (place Cooperplate.woff2 and/or Cooperplate.woff in src/assets/fonts/) */
 @font-face {
   font-family: 'Cooperplate';
-  src: local('Cooperplate'), local('Copperplate');
+  /* Prefer modern woff2, fall back to woff. Vite will rewrite these URLs during build. */
+  src: url('./assets/fonts/Cooperplate.woff2') format('woff2'),
+       url('./assets/fonts/Cooperplate.woff') format('woff'),
+       local('Cooperplate'),
+       local('Copperplate');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: swap; /* render fallback text immediately, swap when font loads */
 }
 
 /* Ken Burns effect handled partly in component via transform scaling on active slide */
@@ -23,7 +27,7 @@ html, body, #root {
   color: #000;
 }
 
-.font-cooperplate { font-family: 'Cooperplate', 'Copperplate', serif; }
+.font-cooperplate { font-family: 'Cooperplate', 'Playfair Display', 'Copperplate', serif; }
 
 /* Increase the default transition duration classes a bit */
 .duration-1500 { transition-duration: 1500ms; }
@@ -39,3 +43,12 @@ html, body, #root {
 h1.drop-shadow-lg {
   text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
+
+/* Prevent images from being touch-scrollable or draggable and disable clicks */
+.no-touch {
+  touch-action: none; /* prevent panning/scrolling when touching the image */
+  -webkit-user-drag: none; /* prevent image drag on iOS */
+  -webkit-touch-callout: none; /* disable callouts */
+}
+
+/* Utility: disable pointer events and selection are handled via Tailwind classes pointer-events-none and select-none */

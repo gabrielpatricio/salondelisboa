@@ -30,8 +30,10 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
             key={src + i}
             src={src}
             alt={`slide-${i}`}
+            // disable pointer events/clicks and touch scrolling/drag on mobile
             className={`absolute inset-0 w-full h-full object-cover object-center block transition-opacity duration-700 ease-out
-              ${active ? 'opacity-100 scale-100 z-20' : 'opacity-0 scale-95 z-10'}`}
+              ${active ? 'opacity-100 scale-100 z-20' : 'opacity-0 scale-95 z-10'} pointer-events-none select-none no-touch`}
+            style={{ WebkitUserDrag: 'none' }}
           />
         )
       })}
