@@ -15,6 +15,17 @@
   font-display: swap; /* render fallback text immediately, swap when font loads */
 }
 
+/* Bold weight - self-hosted Cooperplate Bold (TTF included as fallback) */
+@font-face {
+  font-family: 'Cooperplate';
+  src: url('./assets/fonts/Cooperplate-Bold.woff2') format('woff2'),
+       url('./assets/fonts/Cooperplate-Bold.woff') format('woff'),
+       url('./assets/fonts/Cooperplate-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Ken Burns effect handled partly in component via transform scaling on active slide */
 
 /* small reset */
@@ -51,11 +62,9 @@ h1.drop-shadow-lg {
   -webkit-touch-callout: none; /* disable callouts */
 }
 
-/* Restore the bold appearance by using Playfair Display for bold elements
-   (Playfair was previously loaded from Google Fonts and provided the bold weight).
-   This preserves the visual bold look without requiring Cooperplate-Bold files. */
+/* Headings and strong text should use Cooperplate bold when available, falling back to Playfair if needed */
 strong, b, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', 'Cooperplate', serif;
+  font-family: 'Cooperplate', 'Playfair Display', serif;
   font-weight: 700;
 }
 
