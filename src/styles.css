@@ -56,7 +56,7 @@ h1.drop-shadow-lg {
 /* Use Cooperplate for all text (including headings) and avoid bold weight */
 strong, b, h1, h2, h3, h4, h5, h6 {
   font-family: 'Cooperplate', serif;
-  font-weight: 400; /* keep headings unbolded per preference */
+  font-weight: 400 !important; /* force headings unbolded */
 }
 
 /* Utility: disable pointer events and selection are handled via Tailwind classes pointer-events-none and select-none */
