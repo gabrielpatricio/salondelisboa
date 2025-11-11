@@ -15,16 +15,7 @@
   font-display: swap; /* render fallback text immediately, swap when font loads */
 }
 
-/* Bold weight - self-hosted Cooperplate Bold (TTF included as fallback) */
-@font-face {
-  font-family: 'Cooperplate';
-  src: url('./assets/fonts/Cooperplate-Bold.woff2') format('woff2'),
-       url('./assets/fonts/Cooperplate-Bold.woff') format('woff'),
-       url('./assets/fonts/Cooperplate-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Note: we prefer a single Cooperplate weight (regular). Bold weight is intentionally not used. */
 
 /* Ken Burns effect handled partly in component via transform scaling on active slide */
 
@@ -38,7 +29,7 @@ html, body, #root {
   color: #000;
 }
 
-.font-cooperplate { font-family: 'Cooperplate', 'Playfair Display', 'Copperplate', serif; }
+.font-cooperplate { font-family: 'Cooperplate', serif; }
 
 /* Increase the default transition duration classes a bit */
 .duration-1500 { transition-duration: 1500ms; }
@@ -62,10 +53,10 @@ h1.drop-shadow-lg {
   -webkit-touch-callout: none; /* disable callouts */
 }
 
-/* Headings and strong text should use Cooperplate bold when available, falling back to Playfair if needed */
+/* Use Cooperplate for all text (including headings) and avoid bold weight */
 strong, b, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Cooperplate', 'Playfair Display', serif;
-  font-weight: 700;
+  font-family: 'Cooperplate', serif;
+  font-weight: 400; /* keep headings unbolded per preference */
 }
 
 /* Utility: disable pointer events and selection are handled via Tailwind classes pointer-events-none and select-none */
