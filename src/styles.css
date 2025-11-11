@@ -51,4 +51,12 @@ h1.drop-shadow-lg {
   -webkit-touch-callout: none; /* disable callouts */
 }
 
+/* Restore the bold appearance by using Playfair Display for bold elements
+   (Playfair was previously loaded from Google Fonts and provided the bold weight).
+   This preserves the visual bold look without requiring Cooperplate-Bold files. */
+strong, b, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', 'Cooperplate', serif;
+  font-weight: 700;
+}
+
 /* Utility: disable pointer events and selection are handled via Tailwind classes pointer-events-none and select-none */
