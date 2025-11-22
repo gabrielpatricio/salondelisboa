@@ -17,7 +17,7 @@ export default function App() {
 
   return (
   <div className="min-h-screen w-screen bg-[#e8c8b3] flex items-center justify-center font-cooperplate text-black">
-    <Slideshow images={images} interval={10000}/>
+    <Slideshow images={images} interval={5000}/>
 
       <CornerButton
         position="top-left"

@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
 
 export default function Slideshow({ images = [], interval = 5000, theme = 'light' }) {
-  const [index, setIndex] = useState(0)
   const [loaded, setLoaded] = useState({})
   const [currentImages, setCurrentImages] = useState(images)
+  const [index, setIndex] = useState(0)
   const timer = useRef(null)
+  const initialIndexSet = useRef(false)
 
   // Choose mobile images when on small screens (max-width: 640px)
   useEffect(() => {
@@ -13,27 +14,28 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
       if (!isMobile) {
         // Desktop: only show first image (img1.png)
         setCurrentImages([images[0]])
+        setIndex(0)
         return
       }
 
-      // Mobile: map to mobile variants when available: replace base filename starting with "img1" -> "img1_mobile" and keep directory
-      const mapped = images.map(src => {
-        try {
-          const parts = src.split('/')
-          const filename = parts[parts.length - 1]
-          if (/mobile/i.test(filename)) return src // already mobile
-          // replace imgN.png with imgN_mobile.jpeg (pattern: img1, img2, etc.)
-          const match = filename.match(/^(img\d+)\.(png|jpg|jpeg)$/i)
-          if (match) {
-            parts[parts.length - 1] = `${match[1]}_mobile.jpeg`
-            return parts.join('/')
-          }
-          return src
-        } catch (e) {
-          return src
-        }
-      })
-      setCurrentImages(mapped)
+      // Mobile: use all images from mobile/ folder
+      const mobileImages = [
+        '/images/mobile/img1_mobile.jpeg',
+        '/images/mobile/img2_mobile.jpeg',
+        '/images/mobile/img3_mobile.jpeg',
+        '/images/mobile/img4_mobile.jpeg',
+        '/images/mobile/img5_mobile.jpeg',
+        '/images/mobile/img6_mobile.jpeg',
+        '/images/mobile/img7_mobile.jpeg',
+        '/images/mobile/img8_mobile.jpeg'
+      ]
+      setCurrentImages(mobileImages)
+      
+      // Set random starting index only once on initial load
+      if (!initialIndexSet.current) {
+        setIndex(Math.floor(Math.random() * mobileImages.length))
+        initialIndexSet.current = true
+      }
     }
 
     applyMobile()
