@@ -81,6 +81,8 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
           />
         )
       })}
+      {/* Subtle dark overlay for text visibility */}
+      <div className="absolute inset-0 bg-black/20 z-30 pointer-events-none" />
     </div>
   )
 }
