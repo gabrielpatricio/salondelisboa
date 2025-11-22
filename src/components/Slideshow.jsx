@@ -3,27 +3,70 @@ import React, { useEffect, useState, useRef } from 'react'
 export default function Slideshow({ images = [], interval = 5000, theme = 'light' }) {
   const [index, setIndex] = useState(0)
   const [loaded, setLoaded] = useState({})
+  const [currentImages, setCurrentImages] = useState(images)
   const timer = useRef(null)
+
+  // Choose mobile images when on small screens (max-width: 640px)
+  useEffect(() => {
+    const applyMobile = () => {
+      const isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 640px)').matches
+      if (!isMobile) {
+        // Desktop: only show first image (img1.png)
+        setCurrentImages([images[0]])
+        return
+      }
+
+      // Mobile: map to mobile variants when available: replace base filename starting with "img1" -> "img1_mobile" and keep directory
+      const mapped = images.map(src => {
+        try {
+          const parts = src.split('/')
+          const filename = parts[parts.length - 1]
+          if (/mobile/i.test(filename)) return src // already mobile
+          // replace imgN.png with imgN_mobile.jpeg (pattern: img1, img2, etc.)
+          const match = filename.match(/^(img\d+)\.(png|jpg|jpeg)$/i)
+          if (match) {
+            parts[parts.length - 1] = `${match[1]}_mobile.jpeg`
+            return parts.join('/')
+          }
+          return src
+        } catch (e) {
+          return src
+        }
+      })
+      setCurrentImages(mapped)
+    }
+
+    applyMobile()
+    // also listen for orientation/resize changes
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      const mq = window.matchMedia('(max-width: 640px)')
+      const handler = () => applyMobile()
+      mq.addEventListener ? mq.addEventListener('change', handler) : mq.addListener(handler)
+      return () => {
+        mq.removeEventListener ? mq.removeEventListener('change', handler) : mq.removeListener(handler)
+      }
+    }
+  }, [images])
 
   // preload images
   useEffect(() => {
-    images.forEach(src => {
+    currentImages.forEach(src => {
       const img = new Image()
       img.src = src
       img.onload = () => setLoaded(prev => ({ ...prev, [src]: true }))
     })
-  }, [images])
+  }, [currentImages])
 
   useEffect(() => {
     timer.current = setInterval(() => {
-      setIndex(i => (i + 1) % images.length)
+      setIndex(i => (i + 1) % currentImages.length)
     }, interval)
     return () => clearInterval(timer.current)
-  }, [images.length, interval])
+  }, [currentImages.length, interval])
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden">
-      {images.map((src, i) => {
+      {currentImages.map((src, i) => {
         const active = i === index
         return (
           <img

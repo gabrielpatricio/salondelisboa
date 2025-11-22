@@ -5,8 +5,8 @@ import ReservationModal from './components/ReservationModal'
 
 export default function App() {
   const images = [
-    import.meta.env.BASE_URL + 'images/img1.png'
-    // '/images/img2.png',
+    import.meta.env.BASE_URL + 'images/img1.png',
+    import.meta.env.BASE_URL + 'images/img2.png'
     // '/images/img3.png',
     // '/images/img4.png',
     ]
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
   <div className="min-h-screen w-screen bg-[#e8c8b3] flex items-center justify-center font-cooperplate text-black">
-    <Slideshow images={images} interval={5000}/>
+    <Slideshow images={images} interval={10000}/>
 
       <CornerButton
         position="top-left"

@@ -20,7 +20,7 @@ export default function CornerButton({ position='top-left', label='', onClick = 
         onClick={onClick}
         aria-label={label}
         className={`${pos} w-8 h-8 fixed rounded-sm shadow-md hover:scale-110 transition-transform
-          bg-black border border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#4576bb]
+          bg-[#013b80] sm:bg-black border border-transparent focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#013b80] sm:focus:ring-black
           z-50 cursor-pointer`}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
@@ -29,8 +29,8 @@ export default function CornerButton({ position='top-left', label='', onClick = 
           }
         }}
       />
-      <div className={`${labelPos} ${labelSide} fixed text-xs uppercase tracking-widest select-none
-        text-black z-50`}>
+      <div className={`${labelPos} ${labelSide} fixed text-[11px] uppercase tracking-widest select-none
+        text-[#ece8e1] sm:text-black z-50`}>
         {label}
       </div>
     </>
