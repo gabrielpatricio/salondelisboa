@@ -26,8 +26,7 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
         '/images/mobile/img4_mobile.jpeg',
         '/images/mobile/img5_mobile.jpeg',
         '/images/mobile/img6_mobile.jpeg',
-        '/images/mobile/img7_mobile.jpeg',
-        '/images/mobile/img8_mobile.jpeg'
+        '/images/mobile/img7_mobile.jpeg'
       ]
       setCurrentImages(mobileImages)
       
