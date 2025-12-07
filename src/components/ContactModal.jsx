@@ -26,7 +26,7 @@ export default function ContactModal({ open, onClose }) {
       />
       
       {/* Modal */}
-      <div className="relative bg-white/95 backdrop-blur-sm rounded-md shadow-xl p-8 max-w-md w-[90vw] mx-4">
+      <div className="relative bg-white/10 backdrop-blur-md rounded-md shadow-xl p-8 max-w-md w-[90vw] mx-4">
         <div className="flex flex-col gap-4">
           <button
             onClick={handleEmail}
