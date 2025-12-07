@@ -21,7 +21,6 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
       // Mobile: use all images from mobile/ folder
       const mobileImages = [
         '/images/mobile/img1_mobile.jpeg',
-        '/images/mobile/img2_mobile.jpeg',
         '/images/mobile/img3_mobile.jpeg',
         '/images/mobile/img4_mobile.jpeg',
         '/images/mobile/img5_mobile.jpeg',

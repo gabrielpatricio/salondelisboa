@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Slideshow from './components/Slideshow'
 import CornerButton from './components/CornerButton'
 import ReservationModal from './components/ReservationModal'
+import ContactModal from './components/ContactModal'
 
 export default function App() {
   const images = [
@@ -14,6 +15,7 @@ export default function App() {
   // theme switching removed — UI is static (dark squares, black text)
 
   const [showReservation, setShowReservation] = useState(false)
+  const [showContact, setShowContact] = useState(false)
 
   return (
   <div className="min-h-screen w-screen bg-[#e8c8b3] flex items-center justify-center font-cooperplate text-black">
@@ -22,15 +24,7 @@ export default function App() {
       <CornerButton
         position="top-left"
         label="Contact Us"
-        onClick={() => {
-          // open mail client and optionally prompt for a phone number to call
-          try {
-            window.open('mailto:Salondelisboa@gmail.com', '_self')
-          } catch (e) {
-            // fallback
-            window.location.href = 'mailto:Salondelisboa@gmail.com'
-          }
-        }}
+        onClick={() => setShowContact(true)}
       />
       <CornerButton
         position="top-right"
@@ -52,6 +46,11 @@ export default function App() {
         open={showReservation}
         onClose={() => setShowReservation(false)}
         url="https://reservation.umai.io/en/widget/salon"
+      />
+      
+      <ContactModal
+        open={showContact}
+        onClose={() => setShowContact(false)}
       />
     </div>
   )
