@@ -12,9 +12,20 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
     const applyMobile = () => {
       const isMobile = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 640px)').matches
       if (!isMobile) {
-        // Desktop: only show first image (img1.png)
-        setCurrentImages([images[0]])
-        setIndex(0)
+        // Desktop: use all images from desktop/ folder
+        const desktopImages = [
+          '/images/img1.png',
+          '/images/desktop/img1_desktop.jpeg',
+          '/images/desktop/img2_desktop.jpeg',
+          '/images/desktop/img3_desktop.jpeg'
+        ]
+        setCurrentImages(desktopImages)
+        
+        // Set random starting index only once on initial load for desktop too
+        if (!initialIndexSet.current) {
+          setIndex(Math.floor(Math.random() * desktopImages.length))
+          initialIndexSet.current = true
+        }
         return
       }
 
@@ -25,7 +36,14 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
         '/images/mobile/img4_mobile.jpeg',
         '/images/mobile/img5_mobile.jpeg',
         '/images/mobile/img6_mobile.jpeg',
-        '/images/mobile/img7_mobile.jpeg'
+        '/images/mobile/img7_mobile.jpeg',
+        '/images/mobile/img8_mobile.jpeg',
+        '/images/mobile/img9_mobile.jpeg',
+        '/images/mobile/img10_mobile.jpeg',
+        '/images/mobile/img11_mobile.jpeg',
+        '/images/mobile/img12_mobile.jpeg',
+        '/images/mobile/img13_mobile.jpeg',
+        '/images/mobile/img14_mobile.jpeg'
       ]
       setCurrentImages(mobileImages)
       

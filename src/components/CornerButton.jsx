@@ -30,7 +30,7 @@ export default function CornerButton({ position='top-left', label='', onClick = 
         }}
       />
       <div className={`${labelPos} ${labelSide} fixed text-[11px] uppercase tracking-widest select-none
-        text-[#ece8e1] sm:text-black z-50`}>
+        text-[#ece8e1] sm:text-white z-50`}>
         {label}
       </div>
     </>
