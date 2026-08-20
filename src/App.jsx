@@ -3,6 +3,7 @@ import Slideshow from './components/Slideshow'
 import CornerButton from './components/CornerButton'
 import ReservationModal from './components/ReservationModal'
 import ContactModal from './components/ContactModal'
+import MenuModal from './components/MenuModal'
 
 export default function App() {
   const images = [
@@ -16,6 +17,7 @@ export default function App() {
 
   const [showReservation, setShowReservation] = useState(false)
   const [showContact, setShowContact] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
 
   return (
   <div className="min-h-screen w-screen bg-[#e8c8b3] flex items-center justify-center font-cooperplate text-black">
@@ -34,7 +36,7 @@ export default function App() {
       <CornerButton
         position="bottom-left"
         label="Menu"
-        onClick={() => window.open(import.meta.env.BASE_URL + 'files/menu.pdf', '_blank')}
+        onClick={() => setShowMenu(true)}
       />
       <CornerButton
         position="bottom-right"
@@ -51,6 +53,11 @@ export default function App() {
       <ContactModal
         open={showContact}
         onClose={() => setShowContact(false)}
+      />
+
+      <MenuModal
+        open={showMenu}
+        onClose={() => setShowMenu(false)}
       />
     </div>
   )

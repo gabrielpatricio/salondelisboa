@@ -17,7 +17,10 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
           '/images/img1.png',
           '/images/desktop/img1_desktop.jpeg',
           '/images/desktop/img2_desktop.jpeg',
-          '/images/desktop/img3_desktop.jpeg'
+          '/images/desktop/img3_desktop.jpeg',
+          '/images/desktop/img4_desktop.jpeg',
+          '/images/desktop/img5_desktop.jpeg',
+          '/images/desktop/img6_desktop.jpeg'
         ]
         setCurrentImages(desktopImages)
         
@@ -43,7 +46,8 @@ export default function Slideshow({ images = [], interval = 5000, theme = 'light
         '/images/mobile/img11_mobile.jpeg',
         '/images/mobile/img12_mobile.jpeg',
         '/images/mobile/img13_mobile.jpeg',
-        '/images/mobile/img14_mobile.jpeg'
+        '/images/mobile/img14_mobile.jpeg',
+        '/images/mobile/img15_mobile.jpeg'
       ]
       setCurrentImages(mobileImages)
       
